@@ -18,6 +18,7 @@ class EventController < ApplicationController
     if @event.save
       redirect_to '/'
     else
+      puts "pouet"
       render :new
     end          
   end
