@@ -1,0 +1,2 @@
+class JoinEvent < ApplicationRecord
+end

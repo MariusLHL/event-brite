@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EventBrite</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
+
+  </head>
+
+  <body >
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user%>
+          <li><%= link_to "Create an event", new_event_url, class: "waves-effect waves-light btn", data: { turbolinks: false } %></li>
+          <li><%= link_to "Log out", session_path(session[:user_id]), class:"waves-effect waves-light btn", method:"DELETE"%></li>
+        <% else %>
+          <li><%= link_to "Log in",new_session_path, class: "waves-effect waves-light btn" %></li>
+          <li><%= link_to "Register", new_user_path, class:"waves-effect waves-light btn"%></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <br>
+        <div class="container" style="background-color: white;" >
+    <%= yield %>      
+    </div>
+
+  </body>
+  
+      <script>
+        $(document).ready(function(){
+   $('.modal').modal();
+   $('.dropdown-trigger').dropdown();
+});
+    </script>
+    
+              
+</html>
+
+        

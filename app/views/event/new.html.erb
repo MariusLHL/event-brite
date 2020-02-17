@@ -1,0 +1,60 @@
+<script>
+$(document).ready(function() {
+  $("#editor").wysibb()
+})
+
+function updateTextInput(val) {
+          document.getElementById('textInput').value=val; 
+        }
+</script>
+
+     <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
+
+      <%= submit_tag "Commenter", class:"btn waves-effect waves-light"%>
+    <i class="material-icons right">send</i>
+<div class="row">
+            <div class="input-field col s6">
+              <%= text_field_tag 'title'%>
+                <label for="first_name">Title</label>
+            </div>
+            <div class="input-field col s6">
+              <%= text_field_tag :adress %>
+              <label for="first_name">Adress</label>
+            </div>
+</div>
+<div class="row">
+            <div class="input-field col s6">
+                  <label for="start">Date de debut</label>
+                  <%= date_field("start", "date",min: Date.today,placeholder: "")%>
+            </div>
+            <div class="input-field col s6">
+                  <label for="end_date">Date de fin</label>
+                  <%= date_field("end", "date",min: Date.today,placeholder: "")%>
+            </div>
+</div>
+<div class="row">
+            <div class="input-field col s6">
+                  <label for="start">hh:mm:ss</label>
+                  <%= text_field_tag :start_at , ""  , pattern: '(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)' %>
+
+            </div>
+            <div class="input-field col s6">
+                  <label for="end_time">hh:mm:ss</label>
+                  <%= text_field_tag :end_at , ""  , pattern: '(?:[01]\d|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)' %>
+            </div>
+</div>
+<div class="row">
+            <div class="input-field col s11">
+
+    <p class="range-field">
+      <input type="range" min="1" max="1000" onchange="updateTextInput(this.value);"/>
+    </p>
+    </div>
+                <div class="input-field col s1">
+    <%= text_field_tag :price ,"1", id: "textInput"%>
+    </div>
+    </div>
+    
+<%= text_area_tag(:editor, nil)%>
+</div>
+<% end %>

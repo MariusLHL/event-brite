@@ -1,0 +1,28 @@
+<% i = 0 %>
+
+  <div class="section">
+
+
+<div class="row">
+      <div>
+    <h5 class="center-align">Evenement (<%= @event.count%>)</h5>
+  </div>
+
+<% @event.each do |e| %>
+  <div class="col m3">
+    <div class="card">
+      <div class="card-image">
+        <img src="https://i.picsum.photos/id/337/300/150.jpg">
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>      </div>
+      <div class="card-content">
+        <p style="color: #ff7043;"><%= e.start.day%>/<%= e.start.month%>/<%= e.start.year%></p>
+          <%= link_to e.title, event_path(e.id)%>
+        <p><small><%= e.adress%></small></p>
+      </div>
+    </div>
+  </div>
+<% i += 1%>
+<% end %>
+</div>
+
+  </div>

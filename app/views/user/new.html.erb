@@ -1,0 +1,36 @@
+ <div class="row">
+         <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
+
+      <div class="row">
+        <div class="input-field col s6">
+                  <label for="first_name">First Name</label>
+
+          <%= text_field_tag :first_name, ""%>
+        </div>
+        <div class="input-field col s6">
+          <%= text_field_tag :last_name, ""%>
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s6">
+          <%= text_field_tag :password,"" ,type: "password"%>
+          <label for="password">Password</label>
+        </div>
+        <div class="input-field col s6">
+          <%= text_field_tag :password,"" ,type: "password"%>
+          
+          <label for="password">Password confirmation</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= text_field_tag :email, "", type: "email"%>
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <%= submit_tag "S'incrire", class:"btn-large waves-effect waves-light"%>
+    <% end %>
+  </div>
+        
