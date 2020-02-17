@@ -1,0 +1,16 @@
+<%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s10">
+          <%= text_field_tag :card, "", class: "validate"%>
+          <label for="email">Credit card</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Must be a valide credit card</span>
+        </div>
+        <div class="input-field col s2">
+          <%= submit_tag "Attend event", class: "waves-effect waves-light btn"%>
+        </div>
+      </div>
+    </form>
+  </div>
+<% end %>

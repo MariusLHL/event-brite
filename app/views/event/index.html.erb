@@ -1,3 +1,4 @@
+
 <% i = 0 %>
 
   <div class="section">
@@ -13,16 +14,15 @@
     <div class="card">
       <div class="card-image">
         <img src="https://i.picsum.photos/id/337/300/150.jpg">
-          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>      </div>
       <div class="card-content">
-        <p style="color: #ff7043;"><%= e.start.day%>/<%= e.start.month%>/<%= e.start.year%></p>
+        <p style="color: #ff7043;"><%= e.start %></p>
           <%= link_to e.title, event_path(e.id)%>
-        <p><small><%= e.adress%></small></p>
+        <p><small><%= e.location%></small></p>
       </div>
     </div>
   </div>
+</div>
 <% i += 1%>
 <% end %>
-</div>
 
-  </div>
+</div>

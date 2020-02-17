@@ -7,29 +7,26 @@ class EventController < ApplicationController
 
   def create
     @start = params[:start].to_s.split('"')[3].to_time 
-    @end =  params[:end].to_s.split('"')[3].to_time
-    @start_at = params[:start_at].to_time
-    @end_at = params[:end_at].to_time
-    @date_start = DateTime.new(@start.year, @start.month, @start.day, @start_at.hour, @start_at.min, @start_at.sec, @start_at.zone)
-    @date_end = DateTime.new(@end.year, @end.month, @end.day, @end_at.hour, @end_at.min, @end_at.sec, @end_at.zone)
-
+    puts @start
     @event = Event.new(title: params[:title], 
-                        content: params[:editor],
-                        start: @date_start,
-                        end: @date_end,
+                        description: params[:editor],
+                        start: @start,
+                        duration: params[:duration],
                         location: params[:adress],
                         user_id: current_user.id,
                         price: params[:price])
     if @event.save
-      puts @date_end - @date_start 
       redirect_to '/'
     else
-      redirect :new
+      render :new
     end          
   end
 
   def show
     @event = Event.find(params[:id])
-    @content = @event.content.bbcode_to_html 
+    @attendee = @event.user
+    if @attend =  @attendee.find_by(id: current_user.id)
+    end
+    @content = @event.description.bbcode_to_html 
   end
 end

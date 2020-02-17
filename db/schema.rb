@@ -28,11 +28,10 @@ ActiveRecord::Schema.define(version: 2020_02_17_134323) do
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "location"
-    t.text "content"
+    t.text "description"
     t.bigint "user_id"
     t.integer "duration"
     t.datetime "start"
-    t.datetime "end"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_02_17_134323) do
     t.string "first_name"
     t.string "last_name"
     t.text "description"
-    t.string "email"
+    t.string "email", default: "", null: false
     t.string "password_digest"
     t.integer "age"
     t.datetime "created_at", null: false

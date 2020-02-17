@@ -1,3 +1,9 @@
+<script>
+  $(document).ready(function() {
+    $('input#input_text, textarea#textarea2').characterCounter();
+  });
+</script>
+
  <div class="row">
          <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
 
@@ -30,6 +36,12 @@
           <label for="email">Email</label>
         </div>
       </div>
+              <div class="row">
+          <div class="input-field col s12">
+             <%= text_area :description, "", class: "materialize-textarea"%>
+            <label for="textarea2">Description</label>
+          </div>
+        </div>
       <%= submit_tag "S'incrire", class:"btn-large waves-effect waves-light"%>
     <% end %>
   </div>
