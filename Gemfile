@@ -67,4 +67,6 @@ gem 'faker'
 
 gem 'dotenv-rails' 
 
+gem 'devise'
+
 gem 'ruby-bbcode'
