@@ -88,7 +88,7 @@ li.drop {
      <li class="drop">
     <a href="javascript:void(0)" class="waves-effect waves-light btn">Modifier / voir profile</a>
     <div class="drop-c">
-      <%= link_to "voir profile", "users/show" %>
+      <%= link_to "voir profile", current_user %>
       <%= link_to "Modifier profile",  edit_user_registration_path %>
        <%= link_to "Log out", destroy_user_session_path, method:"DELETE", class: "orange"%>
 
