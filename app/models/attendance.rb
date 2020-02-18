@@ -5,7 +5,7 @@ class Attendance < ApplicationRecord
   belongs_to :event
 
   def attend_send
-    @owner = User.find_by(id: self.user_id)
+    @owner = User.find_by(id: self.event.user_id)
     AttendeeMailer.attend_email(@owner).deliver_now
   end
 end

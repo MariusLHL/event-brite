@@ -25,10 +25,17 @@ class EventController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @user = User.find(@event.user_id)
+    @end = end_date(@event.start, @event.duration)
     @attendee = @event.user
     if current_user != nil
       @attend =  @attendee.find_by(id: current_user.id)
     end 
     @content = @event.description.bbcode_to_html 
+  end
+
+  private
+  def end_date(start, duration)
+    return (start + duration * 60)
   end
 end
