@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :event do
-  resources :attendance
-
+    resources :attendance
   end
-  resources :user
-  resources :session
 
+  resources :users
   
   root to: 'event#index'
 

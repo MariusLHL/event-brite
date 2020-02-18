@@ -1,5 +1,5 @@
 class AttendanceController < ApplicationController
-  before_action :authenticate_user, only: [:new]
+  before_action :authenticate_user!, only: [:new]
 
   def create
     @attend = Attendance.new(user_id: current_user.id, 

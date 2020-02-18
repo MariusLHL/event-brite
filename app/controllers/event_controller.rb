@@ -1,6 +1,6 @@
 class EventController < ApplicationController
-  before_action :authenticate_user, only: [:new]
-
+  before_action :authenticate_user!, only: [:new]
+  
   def index
     @event = Event.all
   end
@@ -26,8 +26,9 @@ class EventController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @attendee = @event.user
-    if @attend =  @attendee.find_by(id: current_user.id)
-    end
+    if current_user != nil
+      @attend =  @attendee.find_by(id: current_user.id)
+    end 
     @content = @event.description.bbcode_to_html 
   end
 end
