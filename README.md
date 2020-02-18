@@ -1,24 +1,10 @@
-# README
+# EventbriteClone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Visite sur : lhl-event-brite.herokuapp.com/
 
-Things you may want to cover:
+### Database creation
+`rails db:drop`
 
-* Ruby version
+`rails db:create`
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`rails db:migrate`
