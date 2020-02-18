@@ -14,4 +14,3 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-config.action_mailer.default_url_options = { :host => 'lhl-event-brite.heroku.com' }
