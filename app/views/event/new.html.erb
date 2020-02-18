@@ -16,29 +16,50 @@ function updateTextInput(val) {
 function updateRangeInput(val) {
           document.getElementById('inputRange').value=val; 
         }
+function update(id){
+    var va = document.getElementById(id).value;
+    
+    va = parseInt(Math.round(va/5)*5);
+    document.getElementById('price').value=va;
+    console.log(va);
+}
+
 </script>
 
-     <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
-      <%= submit_tag "Create evenment", class:"btn waves-effect waves-light right"%>
       <br><br>
 
+<% if @event.errors.any? %>
+      <script>
+
+  <% @event.errors.full_messages.each do |message| %>
+      
+      M.toast({html: '<%= message%>'})
+  <%end%>
+  </script>
+<% end %>
+
+     <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
 <div class="row">
             <div class="input-field col s6">
               <%= text_field_tag 'title'%>
                 <label for="first_name">Title</label>
             </div>
             <div class="input-field col s6">
-              <%= text_field_tag :adress %>
+              <%= text_field_tag :adress , nil, oninput:"dupdate(this.value)"%>
               <label for="first_name">Adress</label>
             </div>
 </div>
 <div class="row">
             <div class="input-field col s6 ">
-                   <%= datetime_select("start", "created_on", html_options = {class:"col s2"})%>
+                   <%= select_year(Time.now) %>
+                   <%= select_month(Time.now) %>
+                   <%= select_day(Time.now) %>
+                   <%= select_hour(Time.now) %>
+                   <%= select_minute(Time.now) %>
             </div>
             <div class="input-field col s6">
                   <label for="end_date">Duree de l'evenement en minute</label>
-                  <%= text_field_tag :duration %>
+                  <%= number_field_tag :duration, nil,step: 5 , onchange: "update(this.id)", id: "price"%>
             </div>
 </div>
 <div class="row">
@@ -58,5 +79,8 @@ function updateRangeInput(val) {
     </div>
    
 <%= text_area_tag(:editor, nil)%>
+      <%= submit_tag "Create event", class:"btn waves-effect waves-light right"%>
+
 </div>
+
 <% end %>

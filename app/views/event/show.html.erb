@@ -1,22 +1,16 @@
-<h1 style="text-align:center;"><%= @event.title%></h1>
-<h4 style="text-align:center;"><%= @event.location%></h4>
-<h4 style="text-align:center;"><%= @event.start%></h4>
-<h4 style="text-align:center;"><%= @end%></h4>
-<h4 style="text-align:center;"><%= @event.duration%> min</h4>
-<h4 style="text-align:center;"><%= @user.email%> </h4>
 
 
 
-<article>
 
-</article>
 
   <div class="row">
     <div class="col s12 ">
+    
       <div class="card">
         <div class="card-image">
           <img src="https://i.picsum.photos/id/800/600/200.jpg">
-          <span class="card-title">Card Title</span>
+          <span class="card-title"><%= @event.title %></span>
+          
           <%if @attend%>
                       <a class="btn-floating halfway-fab waves-effect waves-light  green"><i class="material-icons">check</i></a>
           <% else %>
@@ -25,7 +19,17 @@
           <% end %>
         </div>
         <div class="card-content">
+              <h5 >Admin email:<%= @user.email%> </h5>
+              <h5 >Attendee:<%= @event.user.count%> </h5>
           <%= raw @content%>
+        </div>
+          <div class="card-action">
+      <a style="color: black;" >Price:<%= @event.price%>$</a>
+      <a style="color: black;" >Location:<%= @event.location%></a>
+      <a style="color: black;" >Start date:<%= @event.start%></a>
+      <a style="color: black;" >End date:<%= @end%></a>
+      <a style="color: black;" >Duration: <%= @event.duration%> min</a>
+
         </div>
       </div>
     </div>
