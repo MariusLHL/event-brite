@@ -13,6 +13,9 @@ $(document).ready(function() {
 function updateTextInput(val) {
           document.getElementById('textInput').value=val; 
         }
+function updateRangeInput(val) {
+          document.getElementById('inputRange').value=val; 
+        }
 </script>
 
      <%= form_tag url_for(action: "create"), class: "col s12",method: "post" do %>
@@ -42,11 +45,11 @@ function updateTextInput(val) {
             <div class="input-field col s11">
 
     <p class="range-field">
-      <input type="range" value="5" min="5" max="1000" step="5" onchange="updateTextInput(this.value);"/>
+      <input type="range" id = "inputRange"value="5" min="5" max="1000" step="5" oninput="updateTextInput(this.value);"/>
     </p>
     </div>
                 <div class="input-field col s1">
-    <%= text_field_tag :price ,"5", id: "textInput" %>
+    <%= text_field_tag :price ,"5", id: "textInput", oninput: " updateRangeInput(this.value)" %>
         </div>
     <!DOCTYPE html>
 <html>
