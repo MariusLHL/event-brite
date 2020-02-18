@@ -7,24 +7,28 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
 
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+ <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
-    <script>
-      M.AutoInit();
-    </script>
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<!-- Load WysiBB JS and Theme -->
+<script src="http://cdn.wysibb.com/js/jquery.wysibb.min.js"></script>
+<link rel="stylesheet" href="http://cdn.wysibb.com/css/default/wbbtheme.css" />
+
+
   </head>
   
 
   <body >
   <style>
+  .ignore-css{all:unset;}
 ul {
   list-style-type: none;
   margin: 0;
@@ -84,7 +88,6 @@ li.drop {
      <li class="drop">
     <a href="javascript:void(0)" class="waves-effect waves-light btn">Modifier / voir profile</a>
     <div class="drop-c">
-      <%= link_to "Create an event", new_event_url,data: { turbolinks: false } %>
       <%= link_to "voir profile", "users/show" %>
       <%= link_to "Modifier profile",  edit_user_registration_path %>
        <%= link_to "Log out", destroy_user_session_path, method:"DELETE", class: "orange"%>

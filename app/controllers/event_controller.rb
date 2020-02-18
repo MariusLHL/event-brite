@@ -6,11 +6,12 @@ class EventController < ApplicationController
   end
 
   def create
-    @start = params[:start].to_s.split('"')[3].to_time 
-    puts @start
+    event = params[:start]
+    @start = DateTime.new event["created_on(1i)"].to_i, event["created_on(2i)"].to_i, event["created_on(3i)"].to_i,event["created_on(4i)"].to_i, event["created_on(5i)"].to_i
+
     @event = Event.new(title: params[:title], 
                         description: params[:editor],
-                        start: @start,
+                        start: @start.to_time,
                         duration: params[:duration],
                         location: params[:adress],
                         user_id: current_user.id,
@@ -35,7 +36,12 @@ class EventController < ApplicationController
   end
 
   private
+
   def end_date(start, duration)
     return (start + duration * 60)
+  end
+
+  def flatten_date_array hash
+    %w(1 2 3).map { |e| hash["date(#{e}i)"].to_i }
   end
 end

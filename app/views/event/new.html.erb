@@ -1,7 +1,14 @@
 <script>
 $(document).ready(function() {
   $("#editor").wysibb()
+  $('select').material_select();
 })
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, {});
+    $(".select-wrapper").addClass("col s2");
+  });
 
 function updateTextInput(val) {
           document.getElementById('textInput').value=val; 
@@ -23,9 +30,8 @@ function updateTextInput(val) {
             </div>
 </div>
 <div class="row">
-            <div class="input-field col s6">
-                  <label for="start">Date de debut</label>
-                  <%= date_field("start", "date",min: Date.today,placeholder: "")%>
+            <div class="input-field col s6 ">
+                   <%= datetime_select("start", "created_on", html_options = {class:"col s2"})%>
             </div>
             <div class="input-field col s6">
                   <label for="end_date">Duree de l'evenement en minute</label>
@@ -41,9 +47,13 @@ function updateTextInput(val) {
     </div>
                 <div class="input-field col s1">
     <%= text_field_tag :price ,"5", id: "textInput" %>
+        </div>
+    <!DOCTYPE html>
+<html>
+<body>
+
     </div>
-    </div>
-    
+   
 <%= text_area_tag(:editor, nil)%>
 </div>
 <% end %>

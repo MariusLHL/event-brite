@@ -6,6 +6,8 @@
 
 
 <div class="row">
+      <%= link_to "Create an event", new_event_url,data: { turbolinks: false } , class: "waves-effect waves-light btn right"%>
+
       <div>
     <h5 class="center-align">Evenement (<%= @event.count%>)</h5>
   </div>
