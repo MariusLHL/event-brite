@@ -21,22 +21,87 @@
       M.AutoInit();
     </script>
   </head>
+  
 
   <body >
+  <style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .drop:hover .dropbtn {
+  background-color: red;
+}
+
+li.drop {
+  display: inline-block;
+}
+
+.drop-c {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.drop-c a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.drop-c a:hover {background-color: #f1f1f1;}
+
+.drop:hover .drop-c {
+  display: block;
+}
+</style>
 
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if user_signed_in? %>
-          <li><%= link_to "Create an event", new_event_url, class: "waves-effect waves-light btn", data: { turbolinks: false } %></li>
-          <li><%= link_to "Log out", destroy_user_session_path, class:"waves-effect waves-light btn", method:"DELETE"%></li>
-          <li><%= link_to "Modifier profile",  edit_user_registration_path, class:"waves-effect waves-light btn" %></li>
+     <li class="drop">
+    <a href="javascript:void(0)" class="waves-effect waves-light btn">Modifier / voir profile</a>
+    <div class="drop-c">
+      <%= link_to "Create an event", new_event_url,data: { turbolinks: false } %>
+      <%= link_to "voir profile", "users/show" %>
+      <%= link_to "Modifier profile",  edit_user_registration_path %>
+       <%= link_to "Log out", destroy_user_session_path, method:"DELETE", class: "orange"%>
+
+    </div>
+    </li> 
         <% else%>
-                <%= link_to "Sign in", new_user_session_path, class:"waves-effect waves-light btn" %>
-                 <%= link_to "Sign up", new_user_registration_path,  class:"waves-effect waves-light btn"%>
+            <li class="drop">
+    <a href="javascript:void(0)" class="waves-effect waves-light btn">Sign in / Sign up</a>
+    <div class="drop-c">
+                      <%= link_to "Sign in", new_user_session_path %>
+                 <%= link_to "Sign up", new_user_registration_path %>
+    </div>
+    </li>
+
         <% end %>
-      </ul>
+
     </div>
   </nav>
   <br>
